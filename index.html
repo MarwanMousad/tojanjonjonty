@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاجة بسيطة ❤️</title>
+    <!-- استيراد خطوط عربية أنيقة ولطيفة من Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        burgundy: {
+                            950: '#2A050D',
+                            900: '#4A0E1C',
+                            800: '#6B1426',
+                            700: '#800020',
+                            600: '#9E1B3B',
+                        },
+                        cream: '#FFF5F5',
+                        blush: '#F8C8DC',
+                        gold: '#FFD700',
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* تنسيقات مخصصة للحركات والتفاصيل الجمالية */
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background-color: #4A0E1C;
+            color: #FFF5F5;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: radial-gradient(circle at top center, #800020 0%, #6B1426 45%, #4A0E1C 85%, #2A050D 100%);
+            min-height: 235vh;
+            position: relative;
+        }
+
+        /* حركات الكلب اللطيفة */
+        @keyframes wagTail {
+            0%, 100% { transform: rotate(-14deg); }
+            50% { transform: rotate(22deg); }
+        }
+
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-7px); }
+        }
+
+        @keyframes blinkEyes {
+            0%, 92%, 100% { transform: scaleY(1); }
+            96% { transform: scaleY(0.08); }
+        }
+
+        @keyframes earWiggleLeft {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-6deg); }
+        }
+
+        @keyframes earWiggleRight {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(6deg); }
+        }
+
+        @keyframes floatBubble {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-5px) scale(1.02); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 18px rgba(255, 215, 0, 0.45), 0 8px 25px rgba(0, 0, 0, 0.35); }
+            50% { box-shadow: 0 0 32px rgba(255, 215, 0, 0.85), 0 12px 30px rgba(0, 0, 0, 0.45); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-6px); }
+            80% { transform: translateX(6px); }
+        }
+
+        @keyframes floatHeartBg {
+            0% { transform: translateY(100vh) scale(0.6) rotate(0deg); opacity: 0; }
+            15% { opacity: 0.35; }
+            85% { opacity: 0.35; }
+            100% { transform: translateY(-10vh) scale(1.1) rotate(25deg); opacity: 0; }
+        }
+
+        @keyframes popReveal {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.06); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .puppy-body-group {
+            animation: gentleBounce 2.4s ease-in-out infinite;
+            transform-origin: center bottom;
+        }
+
+        .puppy-tail {
+            animation: wagTail 0.55s ease-in-out infinite;
+            transform-origin: 48px 115px;
+        }
+
+        .puppy-eyes {
+            animation: blinkEyes 4s infinite;
+            transform-origin: center 75px;
+        }
+
+        .puppy-ear-left {
+            animation: earWiggleLeft 3s ease-in-out infinite;
+            transform-origin: 65px 52px;
+        }
+
+        .puppy-ear-right {
+            animation: earWiggleRight 3s ease-in-out infinite;
+            transform-origin: 135px 52px;
+        }
+
+        .speech-bubble {
+            animation: floatBubble 2.8s ease-in-out infinite;
+        }
+
+        .glow-btn {
+            animation: pulseGlow 2s infinite;
+        }
+
+        .shake-anim {
+            animation: shake 0.45s ease-in-out;
+        }
+
+        .pop-reveal {
+            animation: popReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* ذيل فقاعة الكلام */
+        .bubble-tail-bottom::after {
+            content: '';
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 14px 14px 0;
+            border-style: solid;
+            border-color: #FFF5F5 transparent transparent transparent;
+        }
+
+        /* خلفية القلوب العائمة */
+        .bg-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatHeartBg linear infinite;
+        }
+
+        /* آثار أقدام لطيفة في منتصف الصفحة */
+        .paw-trail {
+            background-image: radial-gradient(rgba(248, 200, 220, 0.18) 2px, transparent 2px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="selection:bg-blush selection:text-burgundy-900">
+
+    <!-- حاوية الجزيئات والقلوب العائمة في الخلفية -->
+    <div id="particles-container" class="fixed inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+    <!-- شريط علوي بسيط يوضح المرحلة بشكل جمالي -->
+    <header class="fixed top-3 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+        <div class="bg-burgundy-950/70 backdrop-blur-md border border-blush/25 px-4 py-1.5 rounded-full shadow-lg flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span>
+            <span id="stage-badge" class="text-xs sm:text-sm font-semibold text-blush tracking-wide">حاجة بسيطة ❤️</span>
+        </div>
+    </header>
+
+    <!-- الحاوية الرئيسية للصفحة (طويلة لتسمح بالتمرير المريح بين الأعلى والأسفل) -->
+    <main class="relative z-10 flex flex-col justify-between min-h-[235vh] max-w-2xl mx-auto px-4 py-14 sm:py-16">
+
+        <!-- ==================== القسم العلوي (TOP ZONE) ==================== -->
+        <section id="top-zone" class="min-h-[82vh] flex flex-col items-center justify-center text-center pt-6">
+            <div id="top-stage-content" class="w-full flex flex-col items-center transition-all duration-500">
+                
+                <!-- فقاعة الكلام العلوية -->
+                <div class="speech-bubble bubble-tail-bottom relative bg-cream text-burgundy-900 px-7 py-5 rounded-3xl shadow-2xl border-2 border-gold/70 max-w-xs sm:max-w-md mb-6">
+                    <p id="top-speech-text" class="text-xl sm:text-2xl md:text-3xl font-extrabold leading-relaxed">
+                        انزلي تحت
+                    </p>
+                    <div id="top-arrow-hint" class="mt-2 flex justify-center text-burgundy-700 animate-bounce">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- شخصية الكلب الكيوت في الأعلى -->
+                <div id="top-puppy-slot" class="w-48 h-48 sm:w-56 sm:h-56 flex items-center justify-center">
+                    <!-- سيتم حقن SVG الكلب هنا -->
+                </div>
+
+                <!-- تلميح بسيط للتمرير -->
+                <p id="top-sub-hint" class="mt-4 text-blush/80 text-sm sm:text-base font-medium animate-pulse">
+                    اسحبي الشاشة لتحت 👇
+                </p>
+            </div>
+        </section>
+
+        <!-- ==================== المسار الأوسط (SCROLL PATH) ==================== -->
+        <div class="my-8 flex flex-col items-center justify-center gap-6 opacity-50 select-none pointer-events-none">
+            <div class="w-1 h-12 rounded-full bg-gradient-to-b from-blush/40 to-transparent"></div>
+            <!-- آثار أقدام كلب لطيفة -->
+            <svg class="w-7 h-7 text-blush/50 -translate-x-4 rotate-12" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="15" r="4"/><circle cx="7" cy="9" r="2"/><circle cx="10.5" cy="7" r="2"/><circle cx="14.5" cy="7" r="2"/><circle cx="17.5" cy="9.5" r="2"/>
+            </svg>
+            <svg class="w-7 h-7 text-blush/50 translate-x-4 -rotate-12" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="15" r="4"/><circle cx="7" cy="9" r="2"/><circle cx="10.5" cy="7" r="2"/><circle cx="14.5" cy="7" r="2"/><circle cx="17.5" cy="9.5" r="2"/>
+            </svg>
+            <svg class="w-7 h-7 text-blush/50 -translate-x-3 rotate-6" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="15" r="4"/><circle cx="7" cy="9" r="2"/><circle cx="10.5" cy="7" r="2"/><circle cx="14.5" cy="7" r="2"/><circle cx="17.5" cy="9.5" r="2"/>
+            </svg>
+            <div class="w-1 h-12 rounded-full bg-gradient-to-t from-blush/40 to-transparent"></div>
+        </div>
+
+        <!-- ==================== القسم السفلي (BOTTOM ZONE) ==================== -->
+        <section id="bottom-zone" class="min-h-[82vh] flex flex-col items-center justify-center text-center pb-8">
+            <div id="bottom-stage-content" class="w-full flex flex-col items-center transition-all duration-500 opacity-30 scale-95">
+                
+                <!-- فقاعة الكلام السفلية -->
+                <div class="speech-bubble bubble-tail-bottom relative bg-cream text-burgundy-900 px-7 py-5 rounded-3xl shadow-2xl border-2 border-gold/70 max-w-xs sm:max-w-md mb-6">
+                    <p id="bottom-speech-text" class="text-xl sm:text-2xl md:text-3xl font-extrabold leading-relaxed">
+                        اطلعي فوق
+                    </p>
+                    <div id="bottom-arrow-hint" class="mt-2 flex justify-center text-burgundy-700 animate-bounce">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- شخصية الكلب الكيوت في الأسفل -->
+                <div id="bottom-puppy-slot" class="w-48 h-48 sm:w-56 sm:h-56 flex items-center justify-center">
+                    <!-- سيتم حقن SVG الكلب هنا -->
+                </div>
+
+                <!-- زر "دوسي هنا" يظهر فقط في المرحلة 8 -->
+                <div id="action-btn-container" class="hidden mt-6">
+                    <button id="open-password-btn" type="button"
+                        class="glow-btn bg-gradient-to-r from-gold via-amber-300 to-gold text-burgundy-950 font-black text-xl sm:text-2xl px-10 py-4 rounded-full border-2 border-cream shadow-2xl transform transition hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-3">
+                        <span>دوسي هنا</span>
+                        <span class="text-2xl">✨</span>
+                    </button>
+                </div>
+
+                <!-- تلميح بسيط للصعود -->
+                <p id="bottom-sub-hint" class="mt-4 text-blush/80 text-sm sm:text-base font-medium animate-pulse">
+                    اطلعي لفوق تاني 👆
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== نافذة إدخال كلمة السر (PASSWORD MODAL) ==================== -->
+    <div id="password-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-burgundy-950/85 backdrop-blur-md transition-opacity duration-300">
+        <div id="password-card" class="relative w-full max-w-md bg-gradient-to-b from-cream to-rose-50 text-burgundy-900 rounded-3xl p-7 sm:p-9 shadow-2xl border-4 border-gold/80 text-center">
+            
+            <!-- زر إغلاق اختياري -->
+            <button id="close-modal-btn" type="button" aria-label="إغلاق"
+                class="absolute top-4 left-4 w-9 h-9 rounded-full bg-burgundy-900/10 hover:bg-burgundy-900/20 text-burgundy-900 flex items-center justify-center font-bold transition">
+                ✕
+            </button>
+
+            <!-- أيقونة قلب وقفل لطيفة -->
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-burgundy-800 text-gold flex items-center justify-center shadow-lg transform -rotate-3">
+                <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-burgundy-900 mb-2">
+                اكتبي كلمة السر
+            </h2>
+            <p class="text-burgundy-700/80 text-sm sm:text-base mb-6 font-medium">
+                خلصي عشان عايز اشرحلك درس التكاثر  ❤️
+            </p>
+
+            <form id="password-form" class="space-y-4">
+                <div>
+                    <input id="password-input" type="text" inputmode="decimal" autocomplete="off"
+                        placeholder="•••••"
+                        class="w-full text-center text-2xl sm:text-3xl font-extrabold tracking-widest py-3.5 px-5 rounded-2xl bg-white border-2 border-burgundy-700/30 text-burgundy-900 focus:outline-none focus:border-burgundy-700 focus:ring-4 focus:ring-burgundy-700/15 transition" />
+                </div>
+
+                <!-- رسالة خطأ لطيفة عند كتابة رقم خاطئ -->
+                <p id="error-msg" class="hidden text-burgundy-700 font-bold text-sm sm:text-base bg-blush/40 py-2 px-3 rounded-xl">
+                    ححح احا مش عارفه ؟! ❤️
+                </p>
+
+                <button type="submit"
+                    class="w-full bg-gradient-to-r from-burgundy-800 via-burgundy-700 to-burgundy-800 hover:from-burgundy-900 hover:to-burgundy-800 text-cream font-extrabold text-lg sm:text-xl py-3.5 rounded-2xl shadow-lg transform transition active:scale-95 cursor-pointer border border-gold/40">
+                    افتحي ..? ✨
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== شاشة الاحتفال النهائية (FINAL ROMANTIC REVEAL) ==================== -->
+    <div id="celebration-screen" class="fixed inset-0 z-50 hidden flex-col items-center justify-center p-5 bg-gradient-to-b from-burgundy-900 via-burgundy-800 to-burgundy-950 text-center overflow-hidden">
+        
+        <!-- كانفاس القلوب والقصاصات الاحتفالية -->
+        <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-10"></canvas>
+
+        <div class="relative z-20 max-w-xl w-full flex flex-col items-center pop-reveal">
+            
+            <!-- الكلب المحتفل بعيون قلوب -->
+            <div id="celebrate-puppy-slot" class="w-48 h-48 sm:w-56 sm:h-56 mb-4 drop-shadow-2xl"></div>
+
+            <!-- بطاقة الرسالة الرومانسية المتوهجة -->
+            <div class="bg-cream/95 backdrop-blur-md text-burgundy-900 px-8 py-8 sm:px-12 sm:py-10 rounded-3xl shadow-2xl border-4 border-gold relative">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-gold text-burgundy-950 text-xs sm:text-sm font-black px-4 py-1 rounded-full shadow">
+                    17.11 ❤️
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-burgundy-800 leading-tight drop-shadow-sm">
+                    بحبك با مراتي و ربنا يخليكي ليا
+                </h1>
+
+                <div class="mt-5 flex items-center justify-center gap-2 text-2xl sm:text-3xl">
+                    <span class="animate-bounce">💖</span>
+                    <span class="animate-pulse">💍</span>
+                    <span class="animate-bounce" style="animation-delay: 0.2s;">💖</span>
+                </div>
+            </div>
+
+            <!-- زر إعادة التجربة من البداية -->
+            <button id="replay-btn" type="button"
+                class="mt-8 bg-burgundy-950/60 hover:bg-burgundy-950/90 text-blush border border-blush/30 px-6 py-2.5 rounded-full text-sm sm:text-base font-semibold transition cursor-pointer backdrop-blur-sm">
+                إعادة اللعب من الأول 🔄
+            </button>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * مولد رسمة الكلب الكيوت (SVG)
+         * @param {boolean} heartEyes - تفعيل عيون القلوب في شاشة الاحتفال النهائية
+         */
+        function createPuppySVG(heartEyes = false) {
+            const eyesMarkup = heartEyes
+                ? `
+                <!-- عيون قلوب للاحتفال -->
+                <g class="puppy-eyes">
+                    <path d="M78 73 C78 68, 70 68, 70 73 C70 78, 78 83, 78 83 C78 83, 86 78, 86 73 C86 68, 78 68, 78 73 Z" fill="#E11D48"/>
+                    <path d="M122 73 C122 68, 114 68, 114 73 C114 78, 122 83, 122 83 C122 83, 130 78, 130 73 C130 68, 122 68, 122 73 Z" fill="#E11D48"/>
+                </g>
+                `
+                : `
+                <!-- عيون لطيفة لامعة -->
+                <g class="puppy-eyes">
+                    <circle cx="78" cy="75" r="7.5" fill="#2A050D"/>
+                    <circle cx="75.5" cy="72.5" r="2.6" fill="#FFFFFF"/>
+                    <circle cx="80" cy="77" r="1.2" fill="#FFFFFF"/>
+
+                    <circle cx="122" cy="75" r="7.5" fill="#2A050D"/>
+                    <circle cx="119.5" cy="72.5" r="2.6" fill="#FFFFFF"/>
+                    <circle cx="124" cy="77" r="1.2" fill="#FFFFFF"/>
+                </g>
+                `;
+
+            return `
+            <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-[0_14px_20px_rgba(0,0,0,0.45)] overflow-visible" aria-label="كلب كيوت">
+                <!-- ظل ناعم تحت الكلب -->
+                <ellipse cx="100" cy="176" rx="48" ry="10" fill="rgba(25, 2, 8, 0.45)"/>
+
+                <g class="puppy-body-group">
+                    <!-- الذيل المتحرك -->
+                    <path class="puppy-tail" d="M55 125 C30 112, 24 92, 36 86 C45 82, 52 98, 62 115 Z" fill="#D99B66" stroke="#8C5327" stroke-width="2.5"/>
+
+                    <!-- الجسم -->
+                    <path d="M66 112 C60 135, 62 164, 78 168 L122 168 C138 164, 140 135, 134 112 Z" fill="#F5D0A9" stroke="#8C5327" stroke-width="2.5"/>
+                    
+                    <!-- بقعة الصدر الكريمية -->
+                    <ellipse cx="100" cy="134" rx="18" ry="22" fill="#FFF8F0"/>
+
+                    <!-- طوق برجاندي بقلب ذهبي -->
+                    <path d="M72 108 Q100 118 128 108 L131 116 Q100 127 69 116 Z" fill="#800020" stroke="#4A0E1C" stroke-width="2"/>
+                    <path d="M100 117 C100 113, 93 113, 93 117 C93 121, 100 125, 100 125 C100 125, 107 121, 107 117 C107 113, 100 113, 100 117 Z" fill="#FFD700"/>
+
+                    <!-- الأرجل الأمامية -->
+                    <rect x="76" y="138" width="16" height="31" rx="8" fill="#F5D0A9" stroke="#8C5327" stroke-width="2.5"/>
+                    <rect x="108" y="138" width="16" height="31" rx="8" fill="#F5D0A9" stroke="#8C5327" stroke-width="2.5"/>
+                    <!-- الكفوف -->
+                    <ellipse cx="84" cy="168" rx="10" ry="6" fill="#FFF8F0" stroke="#8C5327" stroke-width="2"/>
+                    <ellipse cx="116" cy="168" rx="10" ry="6" fill="#FFF8F0" stroke="#8C5327" stroke-width="2"/>
+
+                    <!-- الأذن اليسرى -->
+                    <path class="puppy-ear-left" d="M64 48 C42 52, 34 82, 46 95 C56 104, 66 86, 68 68 Z" fill="#A66332" stroke="#6E3B18" stroke-width="2.5"/>
+                    
+                    <!-- الأذن اليمنى -->
+                    <path class="puppy-ear-right" d="M136 48 C158 52, 166 82, 154 95 C144 104, 134 86, 132 68 Z" fill="#A66332" stroke="#6E3B18" stroke-width="2.5"/>
+
+                    <!-- الرأس -->
+                    <rect x="56" y="40" width="88" height="74" rx="38" fill="#F5D0A9" stroke="#8C5327" stroke-width="2.5"/>
+
+                    <!-- بقعة بنية لطيفة حول العين -->
+                    <ellipse cx="122" cy="74" rx="17" ry="15" fill="#D99B66" opacity="0.65"/>
+
+                    <!-- خطم الكلب (الأنف والفم) -->
+                    <ellipse cx="100" cy="91" rx="22" ry="16" fill="#FFF8F0"/>
+
+                    <!-- العيون -->
+                    ${eyesMarkup}
+
+                    <!-- خدود وردية -->
+                    <ellipse cx="66" cy="87" rx="7" ry="4" fill="#F472B6" opacity="0.55"/>
+                    <ellipse cx="134" cy="87" rx="7" ry="4" fill="#F472B6" opacity="0.55"/>
+
+                    <!-- الأنف -->
+                    <ellipse cx="100" cy="84" rx="7.5" ry="5.5" fill="#2A050D"/>
+                    <ellipse cx="98" cy="82.5" rx="2.5" ry="1.3" fill="#FFFFFF" opacity="0.7"/>
+
+                    <!-- الابتسامة واللسان الكيوت -->
+                    <path d="M90 94 Q95 100 100 94 Q105 100 110 94" fill="none" stroke="#2A050D" stroke-width="2.3" stroke-linecap="round"/>
+                    <path d="M96 97 C96 105, 104 105, 104 97 Z" fill="#FB7185"/>
+                </g>
+            </svg>
+            `;
+        }
+
+        // ==================== إدارة الحالة والتدفق التفاعلي ====================
+        const STEPS = [
+            { step: 1,  location: 'top',    text: 'انزلي تحت',                                     hint: 'اسحبي الشاشة لتحت 👇' },
+            { step: 2,  location: 'bottom', text: 'اطلعي فوق',                                     hint: 'اطلعي لفوق 👆' },
+            { step: 3,  location: 'top',    text: 'انزلي تحت تاني',                                hint: 'انزلي لتحت كمان مرة 👇' },
+            { step: 4,  location: 'bottom', text: 'اطلعي فوق تالت',                                hint: 'اطلعي لفوق تالت مرة 👆' },
+            { step: 5,  location: 'top',    text: 'استحملي وانزلي لتحت',                           hint: 'معلش انزلي لتحت 👇' },
+            { step: 6,  location: 'bottom', text: 'الصبر مفتاح الفرج اطلعي فوق',                   hint: 'اطلعي لفوق 👆' },
+            { step: 7,  location: 'top',    text: 'هانت.. انزلي تحت',                              hint: 'انزلي لتحت 👇' },
+            { step: 8,  location: 'bottom', text: 'معلش كمان مرة اطلعي فوق',                       hint: 'اطلعي لفوق 👆' },
+            { step: 9,  location: 'top',    text: 'شطورة! انزلي تحت بقى',                          hint: 'انزلي لتحت 👇' },
+            { step: 10, location: 'bottom', text: 'اطلعي فوق  ا جنى ',               hint: 'اطلعي لفوق 👆' },
+            { step: 11, location: 'top',    text: 'خلاص قربنا، انزلي تحت',                         hint: 'انزلي لتحت 👇' },
+            { step: 12, location: 'bottom', text: ' اتنيلي فوق ',                   hint: 'اطلعي لفوق 👆' },
+            { step: 13, location: 'top',    text: 'اتنيلي تحت',                          hint: 'انزلي لتحت 👇' },
+            { step: 14, location: 'bottom', text: 'هوبا فوق',                  hint: 'اطلعي لفوق 👆' },
+            { step: 15, location: 'top',    text: 'هوبا تحت',                      hint: 'انزلي لتحت 👇' },
+            { step: 16, location: 'bottom', text: 'فوق',                         hint: 'اطلعي لفوق 👆' },
+            { step: 17, location: 'top',    text: 'تحت',                        hint: 'انزلي لتحت 👇' },
+            { step: 18, location: 'bottom', text: 'صابر الرباعي صبر اربع مرات اطلعي',                    hint: 'اطلعي لفوق 👆' },
+            { step: 19, location: 'top',    text: 'فس تحت',                          hint: 'انزلي لتحت 👇' },
+            { step: 20, location: 'bottom', text: 'فس فوق',                    hint: 'اطلعي لفوق 👆' },
+            { step: 21, location: 'top',    text: 'فس تحت',                              hint: 'انزلي لتحت 👇' },
+            { step: 22, location: 'bottom', text: 'فس فوق',                        hint: 'اطلعي لفوق 👆' },
+            { step: 23, location: 'top',    text: 'كلها ساعتين انزلي',                          hint: 'انزلي لتحت 👇' },
+            { step: 24, location: 'bottom', text: 'اوعي تتزحلقي وانتي طالعة',                               hint: 'اطلعي لفوق 👆' },
+            { step: 25, location: 'top',    text: '...؟',                           hint: 'انزلي لتحت 👇' },
+            { step: 26, location: 'bottom', text: 'هععع فوق',                    hint: 'اطلعي لفوق 👆' },
+            { step: 27, location: 'top',    text: 'خلاص بجد دي آخر نزلة لتحت!',                    hint: 'انزلي لتحت 👇' },
+            { step: 28, location: 'bottom', text: 'آخر طلعة لفوق',                          hint: 'اطلعي لفوق 👆' },
+            { step: 29, location: 'top',    text: 'خلاص آخر مرة بجد.. انزلي ', hint: 'انزلي لتحت 👇' },
+            { step: 30, location: 'bottom', text: 'دوسي',                        hint: 'دوسي فوق ✨' }
+        ];
+
+        let currentStepIndex = 0; // يبدأ من 0 (الخطوة 1)
+        let isTransitioning = false;
+
+        // عناصر DOM
+        const stageBadge = document.getElementById('stage-badge');
+        const topStageContent = document.getElementById('top-stage-content');
+        const bottomStageContent = document.getElementById('bottom-stage-content');
+        const topSpeechText = document.getElementById('top-speech-text');
+        const bottomSpeechText = document.getElementById('bottom-speech-text');
+        const topSubHint = document.getElementById('top-sub-hint');
+        const bottomSubHint = document.getElementById('bottom-sub-hint');
+        const topPuppySlot = document.getElementById('top-puppy-slot');
+        const bottomPuppySlot = document.getElementById('bottom-puppy-slot');
+        const actionBtnContainer = document.getElementById('action-btn-container');
+        const bottomArrowHint = document.getElementById('bottom-arrow-hint');
+
+        // حقن رسمة الكلب في الأماكن المخصصة
+        topPuppySlot.innerHTML = createPuppySVG(false);
+        bottomPuppySlot.innerHTML = createPuppySVG(false);
+        document.getElementById('celebrate-puppy-slot').innerHTML = createPuppySVG(true);
+
+        /**
+         * تحديث الواجهة بناءً على الخطوة الحالية
+         */
+        function renderCurrentStep() {
+            const current = STEPS[currentStepIndex];
+            const isFinalActionStep = currentStepIndex === STEPS.length - 1;
+            stageBadge.textContent = isFinalActionStep ? 'وصلتي للمفاجأة ✨' : 'حاجة بسيطة ❤️';
+
+            if (current.location === 'top') {
+                // تفعيل القسم العلوي وإظهار الكلب فيه
+                topStageContent.classList.remove('opacity-25', 'scale-90', 'pointer-events-none');
+                topStageContent.classList.add('opacity-100', 'scale-100');
+                topSpeechText.textContent = current.text;
+                topSubHint.textContent = current.hint;
+                topPuppySlot.style.visibility = 'visible';
+
+                // تخفيف القسم السفلي حتى تصل إليه
+                bottomStageContent.classList.remove('opacity-100', 'scale-100');
+                bottomStageContent.classList.add('opacity-25', 'scale-90');
+                bottomPuppySlot.style.visibility = 'hidden';
+                actionBtnContainer.classList.add('hidden');
+            } else {
+                // تفعيل القسم السفلي وإظهار الكلب فيه
+                bottomStageContent.classList.remove('opacity-25', 'scale-90', 'pointer-events-none');
+                bottomStageContent.classList.add('opacity-100', 'scale-100');
+                bottomSpeechText.textContent = current.text;
+                bottomSubHint.textContent = current.hint;
+                bottomPuppySlot.style.visibility = 'visible';
+
+                // تخفيف القسم العلوي
+                topStageContent.classList.remove('opacity-100', 'scale-100');
+                topStageContent.classList.add('opacity-25', 'scale-90');
+                topPuppySlot.style.visibility = 'hidden';
+
+                // بعد إتمام الـ 29 حركة والوصول للأسفل، إظهار زر "دوسي هنا"
+                if (isFinalActionStep) {
+                    actionBtnContainer.classList.remove('hidden');
+                    bottomArrowHint.classList.add('hidden');
+                } else {
+                    actionBtnContainer.classList.add('hidden');
+                    bottomArrowHint.classList.remove('hidden');
+                }
+            }
+        }
+
+        /**
+         * مراقبة موضع التمرير بدقة لمنع القفز العشوائي بين الخطوات
+         */
+        function handleScrollProgression() {
+            if (isTransitioning || currentStepIndex >= STEPS.length - 1) return;
+
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const maxScroll = docHeight - windowHeight;
+
+            if (maxScroll <= 0) return;
+
+            const scrollRatio = scrollTop / maxScroll;
+            const current = STEPS[currentStepIndex];
+
+            // إذا كان المطلوب النزول للأسفل ووصلت المستخدمة لأسفل الصفحة (أكثر من 78%)
+            if (current.location === 'top' && scrollRatio >= 0.78) {
+                advanceStep();
+            }
+            // إذا كان المطلوب الصعود للأعلى ووصلت المستخدمة لأعلى الصفحة (أقل من 22%)
+            else if (current.location === 'bottom' && scrollRatio <= 0.22) {
+                advanceStep();
+            }
+        }
+
+        function advanceStep() {
+            isTransitioning = true;
+            currentStepIndex++;
+            renderCurrentStep();
+
+            // مهلة قصيرة لمنع التفعيل المزدوج السريع
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 350);
+        }
+
+        window.addEventListener('scroll', handleScrollProgression, { passive: true });
+
+        // ==================== منطق نافذة كلمة السر ====================
+        const passwordModal = document.getElementById('password-modal');
+        const passwordCard = document.getElementById('password-card');
+        const openPasswordBtn = document.getElementById('open-password-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const passwordForm = document.getElementById('password-form');
+        const passwordInput = document.getElementById('password-input');
+        const errorMsg = document.getElementById('error-msg');
+        const celebrationScreen = document.getElementById('celebration-screen');
+
+        openPasswordBtn.addEventListener('click', () => {
+            passwordModal.classList.remove('hidden');
+            passwordModal.classList.add('flex');
+            errorMsg.classList.add('hidden');
+            passwordInput.value = '';
+            setTimeout(() => passwordInput.focus(), 100);
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            passwordModal.classList.add('hidden');
+            passwordModal.classList.remove('flex');
+        });
+
+        // تحويل الأرقام العربية إلى إنجليزية إن وُجدت لتسهيل الإدخال
+        function normalizeDigits(str) {
+            const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+            return str.replace(/[٠-٩]/g, d => arabicNumbers.indexOf(d)).trim();
+        }
+
+        passwordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const entered = normalizeDigits(passwordInput.value);
+
+            if (entered === '17.11') {
+                // كلمة السر صحيحة! الانتقال لشاشة الاحتفال
+                passwordModal.classList.add('hidden');
+                passwordModal.classList.remove('flex');
+                triggerCelebration();
+            } else {
+                // كلمة سر خاطئة -> اهتزاز وتلميح لطيف
+                errorMsg.classList.remove('hidden');
+                passwordCard.classList.remove('shake-anim');
+                void passwordCard.offsetWidth; // إعادة تشغيل الأنيميشن
+                passwordCard.classList.add('shake-anim');
+                passwordInput.focus();
+            }
+        });
+
+        // ==================== الاحتفال النهائي والقلوب المتطايرة ====================
+        let confettiAnimationId = null;
+
+        function triggerCelebration() {
+            celebrationScreen.classList.remove('hidden');
+            celebrationScreen.classList.add('flex');
+            startConfettiAndHearts();
+        }
+
+        function startConfettiAndHearts() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#FFD700', '#F8C8DC', '#FFF5F5', '#FF4D6D', '#FF8FA3'];
+
+            for (let i = 0; i < 85; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 12 + 8,
+                    speedY: Math.random() * 2.8 + 1.5,
+                    speedX: (Math.random() - 0.5) * 2,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    isHeart: Math.random() > 0.35,
+                    rotation: Math.random() * Math.PI * 2,
+                    rotSpeed: (Math.random() - 0.5) * 0.08
+                });
+            }
+
+            function drawHeart(x, y, size, color, rotation) {
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.rotate(rotation);
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                const topCurveHeight = size * 0.3;
+                ctx.moveTo(0, topCurveHeight);
+                ctx.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
+                ctx.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, (size + topCurveHeight) / 1.4, 0, size);
+                ctx.bezierCurveTo(0, (size + topCurveHeight) / 1.4, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
+                ctx.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(p => {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.rotation += p.rotSpeed;
+
+                    if (p.y > canvas.height + 20) {
+                        p.y = -20;
+                        p.x = Math.random() * canvas.width;
+                    }
+
+                    if (p.isHeart) {
+                        drawHeart(p.x, p.y, p.size, p.color, p.rotation);
+                    } else {
+                        ctx.save();
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate(p.rotation);
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+                        ctx.restore();
+                    }
+                });
+
+                confettiAnimationId = requestAnimationFrame(animate);
+            }
+
+            if (confettiAnimationId) cancelAnimationFrame(confettiAnimationId);
+            animate();
+        }
+
+        // زر إعادة التجربة
+        document.getElementById('replay-btn').addEventListener('click', () => {
+            if (confettiAnimationId) cancelAnimationFrame(confettiAnimationId);
+            celebrationScreen.classList.add('hidden');
+            celebrationScreen.classList.remove('flex');
+            currentStepIndex = 0;
+            renderCurrentStep();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // توليد قلوب خلفية هادئة تطفو باستمرار
+        function initBackgroundParticles() {
+            const container = document.getElementById('particles-container');
+            const symbols = ['❤️', '✨', '💕'];
+            for (let i = 0; i < 16; i++) {
+                const el = document.createElement('div');
+                el.className = 'bg-particle text-blush/30 select-none';
+                el.textContent = symbols[i % symbols.length];
+                el.style.left = `${Math.random() * 95}%`;
+                el.style.fontSize = `${Math.random() * 14 + 12}px`;
+                el.style.animationDuration = `${Math.random() * 10 + 12}s`;
+                el.style.animationDelay = `${Math.random() * 10}s`;
+                container.appendChild(el);
+            }
+        }
+
+        // تحديث حجم الكانفاس عند تغيير حجم الشاشة
+        window.addEventListener('resize', () => {
+            const canvas = document.getElementById('confetti-canvas');
+            if (!celebrationScreen.classList.contains('hidden')) {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+        });
+
+        // التشغيل الأولي
+        initBackgroundParticles();
+        renderCurrentStep();
+    </script>
+</body>
+</html>
